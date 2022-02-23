@@ -3,7 +3,7 @@ import cv2
 import os
 def save_frame(video_name):  
     # setting
-    video_folder = 'video'
+    video_folder = 'examples/videos'
     pic_folder ='pic'
     frame_num = 10
     # content
