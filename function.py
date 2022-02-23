@@ -1,3 +1,47 @@
+# --- picup frame ---
+import cv2
+import os
+def save_frame(video_name):  
+    # setting
+    video_folder = 'video'
+    pic_folder ='pic'
+    frame_num = 10
+    # content
+    video_path = video_folder + '/' + video_name
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        return
+    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num)
+    ret, frame = cap.read()
+    result_path = pic_folder + '/' + os.path.splitext(video_name)[0]+'.jpg'
+    if ret:
+        cv2.imwrite(result_path, frame)
+
+# --- display_movie ---
+import matplotlib.pyplot as plt
+from PIL import Image
+import numpy as np
+import os
+def display_movie(folder, name):
+    fig = plt.figure(figsize=(20, 45))
+    files = sorted(os.listdir(folder))
+    for i, file in enumerate(files):
+        if file=='.ipynb_checkpoints':
+           continue
+        if file=='.DS_Store':
+           continue
+        img = Image.open(folder+'/'+file)    
+        images = np.asarray(img)
+        ax = fig.add_subplot(10, 3, i+1, xticks=[], yticks=[])
+        image_plt = np.array(images)
+        ax.imshow(image_plt)
+        ax.set_xlabel(name[i], fontsize=30)
+    fig.tight_layout()               
+    plt.show()
+    plt.close()
+
+
+
 # --- display_mp4 ---
 from IPython.display import display, HTML
 from IPython.display import HTML
