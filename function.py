@@ -77,8 +77,8 @@ def display_pic(folder):
         ax = fig.add_subplot(10, 5, i+1, xticks=[], yticks=[])
         image_plt = np.array(images)
         ax.imshow(image_plt)
-        name = os.path.splitext(file)
-        ax.set_xlabel(name[0], fontsize=30)               
+        #name = os.path.splitext(file)
+        ax.set_xlabel(file, fontsize=30)               
     plt.show()
     plt.close()
 
