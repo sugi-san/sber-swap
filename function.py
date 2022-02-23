@@ -52,7 +52,7 @@ def display_mp4(path):
     mp4 = open(path,'rb').read()
     data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
     display(HTML("""
-    <video controls loop autoplay>
+    <video width=700 controls>
         <source src="%s" type="video/mp4">
     </video>
     """ % data_url))
